@@ -1,0 +1,278 @@
+/* BookingForm Styles - Consistent with auth CSS */
+.booking-form {
+    animation: fade-in 0.6s ease-out 0.2s both;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.form-field {
+    margin-bottom: var(--space-4);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+    color: var(--color-neutral-700);
+    transition: color var(--transition-base);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: var(--space-3);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border: 1px solid var(--color-neutral-300);
+    border-radius: var(--radius-md);
+    background-color: white;
+    color: var(--color-neutral-800);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-700);
+    box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.15);
+    transform: translateY(-1px);
+}
+
+.form-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+    border-color: var(--color-error);
+}
+
+.form-input.error:focus,
+.form-select.error:focus,
+.form-textarea.error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.form-error {
+    margin-top: var(--space-2);
+    font-size: 0.75rem;
+    color: var(--color-error);
+    animation: error-shake 0.4s ease-in-out;
+}
+
+@keyframes error-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.form-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: white;
+    background-color: var(--color-primary-700);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.form-button:hover::before {
+    left: 100%;
+}
+
+.form-button:hover,
+.form-button:focus {
+    background-color: var(--color-primary-800);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    outline: none;
+}
+
+.form-button:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+.form-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: var(--color-neutral-400);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.loading-spinner {
+    animation: spinner-rotate 1s linear infinite;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top-color: transparent;
+    margin-right: var(--space-2);
+}
+
+@keyframes spinner-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.secondary-button {
+    background-color: var(--color-neutral-200);
+    color: var(--color-neutral-800);
+}
+
+.secondary-button:hover,
+.secondary-button:focus {
+    background-color: var(--color-neutral-300);
+}
+
+.alert {
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-md);
+    animation: alert-slide-in 0.3s ease-out;
+}
+
+.error-alert {
+    background-color: var(--color-error-50);
+    border: 1px solid var(--color-error-200);
+    color: var(--color-error-600);
+}
+
+.success-content {
+    text-align: center;
+    padding: var(--space-8) 0;
+    animation: fade-in 0.6s ease-out;
+}
+
+.success-icon {
+    width: 4rem;
+    height: 4rem;
+    color: var(--color-green-500);
+    margin-bottom: var(--space-4);
+}
+
+.success-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-neutral-800);
+    margin-bottom: var(--space-2);
+}
+
+.success-message {
+    color: var(--color-neutral-600);
+    margin-bottom: var(--space-4);
+}
+
+.redirect-message {
+    font-size: 0.875rem;
+    color: var(--color-neutral-500);
+}
+
+@keyframes alert-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark mode support */
+.dark-mode .form-label {
+    color: var(--color-neutral-300);
+}
+
+.dark-mode .form-input,
+.dark-mode .form-select,
+.dark-mode .form-textarea {
+    background-color: var(--color-neutral-800);
+    border-color: var(--color-neutral-600);
+    color: var(--color-neutral-100);
+}
+
+.dark-mode .form-input:focus,
+.dark-mode .form-select:focus,
+.dark-mode .form-textarea:focus {
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.dark-mode .error-alert {
+    background-color: rgba(220, 38, 38, 0.1);
+    border-color: rgba(220, 38, 38, 0.2);
+    color: var(--color-error-400);
+}
+
+.dark-mode .success-title {
+    color: var(--color-neutral-100);
+}
+
+.dark-mode .success-message {
+    color: var(--color-neutral-400);
+}
+
+.dark-mode .redirect-message {
+    color: var(--color-neutral-500);
+}
+
+.dark-mode .secondary-button {
+    background-color: var(--color-neutral-600);
+    color: var(--color-neutral-200);
+}
+
+.dark-mode .secondary-button:hover,
+.dark-mode .secondary-button:focus {
+    background-color: var(--color-neutral-500);
+} 

@@ -1,0 +1,312 @@
+/* SessionCard Styles - Consistent with auth CSS */
+.session-card {
+    background-color: rgba(255, 255, 255, 0.97);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid var(--color-neutral-200);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: var(--space-4);
+    position: relative;
+}
+
+.session-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.session-card::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 5%;
+    width: 90%;
+    height: 6px;
+    background-color: var(--color-accent-500);
+    filter: blur(8px);
+    opacity: 0;
+    border-radius: var(--radius-full);
+    z-index: -1;
+    transition: opacity 0.2s ease;
+}
+
+.session-card:hover::after {
+    opacity: 0.2;
+}
+
+.session-content {
+    padding: var(--space-4);
+}
+
+.session-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+}
+
+@media (min-width: 768px) {
+    .session-header {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .session-status-container {
+        margin-top: 0;
+    }
+}
+
+.session-title-container {
+    flex: 1;
+}
+
+.session-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--color-primary-800);
+    margin-bottom: var(--space-1);
+}
+
+.session-date {
+    font-size: 0.875rem;
+    color: var(--color-neutral-600);
+}
+
+.session-status-container {
+    margin-top: var(--space-2);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background-color: var(--color-yellow-100);
+    color: var(--color-yellow-800);
+}
+
+.status-confirmed {
+    background-color: var(--color-green-100);
+    color: var(--color-green-800);
+}
+
+.status-completed {
+    background-color: var(--color-blue-100);
+    color: var(--color-blue-800);
+}
+
+.status-cancelled {
+    background-color: var(--color-red-100);
+    color: var(--color-red-800);
+}
+
+.session-details {
+    font-size: 0.875rem;
+    color: var(--color-neutral-600);
+}
+
+.session-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+    .session-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.session-detail {
+    margin-bottom: var(--space-1);
+}
+
+.session-notes {
+    margin-top: var(--space-2);
+}
+
+.detail-label {
+    font-weight: 500;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.session-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--space-4);
+    gap: var(--space-2);
+}
+
+.action-button {
+    padding: var(--space-1) var(--space-3);
+    font-size: 0.875rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.cancel-action {
+    color: var(--color-error);
+    border: 1px solid var(--color-error-200);
+    background-color: transparent;
+}
+
+.cancel-action:hover {
+    background-color: var(--color-error-50);
+}
+
+.review-action {
+    background-color: var(--color-primary-600);
+    color: white;
+    border: none;
+}
+
+.review-action:hover {
+    background-color: var(--color-primary-700);
+}
+
+.details-action {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-800);
+    border: none;
+}
+
+.details-action:hover {
+    background-color: var(--color-neutral-200);
+}
+
+/* Cancel confirmation overlay */
+.cancel-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    z-index: 10;
+    animation: fade-in 0.2s ease-out;
+}
+
+.cancel-dialog {
+    text-align: center;
+}
+
+.cancel-message {
+    margin-bottom: var(--space-4);
+    color: var(--color-neutral-800);
+}
+
+.cancel-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+}
+
+.cancel-button {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.cancel-no {
+    background-color: var(--color-neutral-200);
+    color: var(--color-neutral-800);
+    border: none;
+}
+
+.cancel-no:hover {
+    background-color: var(--color-neutral-300);
+}
+
+.cancel-yes {
+    background-color: var(--color-error);
+    color: white;
+    border: none;
+}
+
+.cancel-yes:hover {
+    background-color: var(--color-error-600);
+}
+
+/* Dark mode support */
+.dark-mode .session-card {
+    background-color: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+}
+
+.dark-mode .session-title {
+    color: var(--color-neutral-100);
+}
+
+.dark-mode .session-date,
+.dark-mode .session-details {
+    color: var(--color-neutral-400);
+}
+
+.dark-mode .status-pending {
+    background-color: rgba(234, 179, 8, 0.2);
+    color: var(--color-yellow-300);
+}
+
+.dark-mode .status-confirmed {
+    background-color: rgba(22, 163, 74, 0.2);
+    color: var(--color-green-300);
+}
+
+.dark-mode .status-completed {
+    background-color: rgba(37, 99, 235, 0.2);
+    color: var(--color-blue-300);
+}
+
+.dark-mode .status-cancelled {
+    background-color: rgba(220, 38, 38, 0.2);
+    color: var(--color-red-300);
+}
+
+.dark-mode .details-action {
+    background-color: var(--color-neutral-700);
+    color: var(--color-neutral-200);
+}
+
+.dark-mode .details-action:hover {
+    background-color: var(--color-neutral-600);
+}
+
+.dark-mode .cancel-message {
+    color: var(--color-neutral-200);
+}
+
+.dark-mode .cancel-overlay {
+    background-color: rgba(31, 41, 55, 0.9);
+}
+
+.dark-mode .cancel-no {
+    background-color: var(--color-neutral-700);
+    color: var(--color-neutral-200);
+}
+
+.dark-mode .cancel-no:hover {
+    background-color: var(--color-neutral-600);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+} 

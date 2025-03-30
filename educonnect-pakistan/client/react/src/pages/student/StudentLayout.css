@@ -1,0 +1,12 @@
+.student-layout {
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .student-layout {
+    padding: 0.5rem;
+  }
+} 
